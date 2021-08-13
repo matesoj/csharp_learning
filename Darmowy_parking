@@ -1,0 +1,37 @@
+using System;
+using System.Threading;
+
+namespace char_counter
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string sep = "---------------------------------";
+            /* string currentday = DateTime.Today.ToString("dd/MM/yyyy");
+            string currenthour = DateTime.Now.ToString("HH:mm:ss");
+            */
+            int iy = 1;
+            while(true)
+            {
+                string currentday = DateTime.Today.ToString("dd/MM/yyyy");
+                string currenthour = DateTime.Now.ToString("HH:mm:ss");
+                string currenthour20 = DateTime.Now.AddMinutes(20).ToString("HH:mm:ss");
+               
+                Console.WriteLine(sep);
+                Console.WriteLine("Data: " + currentday);
+                Console.WriteLine("Godzina wjazdu: " + currenthour);
+                Console.WriteLine("Godzina zakończenia "+"darmowego parkowania: " + currenthour20);
+                Console.WriteLine("--- ADMINISTRATOR PARKINGU   ---");
+                Console.WriteLine("--- NIP: 123-456-789         ---");
+                Console.WriteLine("--- Tel: +48 123-456-789     ---");
+                Console.WriteLine(sep);
+                Console.WriteLine(iy);
+                iy++;
+                
+                Thread.Sleep(1000);
+            }
+        }
+    }
+}
