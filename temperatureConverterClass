@@ -1,0 +1,43 @@
+using System;
+
+namespace temperatureConventer
+{
+    public class ConvertTemperature
+    {
+        public void CelToFar(float temperature)
+        {
+            float temp = (temperature * 1.8f) + 32f;
+            Console.WriteLine(temp);
+        }
+        public void FarToCel(float temperature)
+        {
+            float temp = (temperature * 1.8f) - 32f;
+            Console.WriteLine(temp);
+        }
+        public void FarToKel(float temperature)
+        {
+            float temp = (temperature + 459.67f) * 5.9f;
+            Console.WriteLine(temp);
+        }
+        public void KelToFar(float temperature)
+        {
+            float temp = (temperature * 1.8f) - 459.67f;
+            Console.WriteLine(temp);
+        }
+        public void CelToKel(float temperature)
+        {
+            float temp = temperature + 237.15f;
+            Console.WriteLine(temp);
+        }
+        public void KelToCel(float temperature)
+        {
+            float temp = temperature - 237.15f;
+            Console.WriteLine(temp);
+        }
+       
+
+    }
+    
+   
+
+}
