@@ -1,0 +1,147 @@
+using System;
+using System.Threading;
+
+namespace Bankomat
+{
+    class Program
+    {
+
+       
+
+        static void Main(string[] args)
+        {
+            
+            Console.WriteLine("Bankomat powered by POLSKIE BANKOMATY S.A");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Wybierz sposób wypłaty:");
+            Console.WriteLine("1. Wypłata kartą.");
+            Console.WriteLine("2. Wypłata BLIK.");
+            Console.WriteLine("3. Sprawdź stan konta.");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            string choice = Console.ReadLine();
+            int x = Convert.ToInt32(choice);
+            Console.WriteLine(x);
+            
+            switch(x)
+            {
+                case 1:
+                    card();
+                    break;
+                case 2:
+                    blik();
+                    break;
+                case 3:
+                    
+                    break;
+            }
+
+            void card()
+            {
+                Console.Clear();
+                
+                Console.WriteLine("Wypłata kartą");
+                Console.WriteLine("Szybka wypłata:");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1.   20 PLN (bez PIN) ");
+                Console.WriteLine("2.   50 PLN (bez PIN) ");
+                Console.WriteLine("3.   100 PLN          ");
+                Console.WriteLine("4.   200 PLN          ");
+                Console.WriteLine("5.   Inna kwota       ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+
+                string choice1 = Console.ReadLine();
+                int cx = Convert.ToInt32(choice1);
+                Console.WriteLine(cx);
+
+                switch(cx)
+                {
+                    case 1:
+                        Console.WriteLine("Wypłacono 20 zł");
+                        Console.WriteLine("Generowanie potwierdzenia");
+                        break;
+                    case 2:
+                        Console.WriteLine("Wypłacono 50 zł");
+                        Console.WriteLine("Generowanie potwierdzenia");
+                        break;
+                    case 3:
+                        enterpin(100);
+                        break;
+                    case 4:
+                        enterpin(200);
+                        break;
+                    case 5:
+                        enterpin(0);
+                        break;
+                }
+            }
+            void blik()
+            {
+                Console.Clear();
+                Console.WriteLine("Wprowadź kwotę wypłaty (Podzielna przez 50 zł):");
+                string amount = Console.ReadLine();
+                int am = Convert.ToInt32(amount);
+                if (am%50 == 0)
+                {
+                    Console.WriteLine("Wprowadź 6 cyfrowy kod BLIK");
+                    string blikcode = Console.ReadLine();
+                    if (blikcode.Length == 6)
+                    {
+                        Console.WriteLine("Potwierdź płatność na telefonie");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nieprawidłowy kod");
+                        Thread.Sleep(3000);
+                        blik();
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Nieprawidłowa kwota. Wprowadź ponownie");
+                    Thread.Sleep(3000);
+                    blik();
+                }
+                
+
+            }
+            void enterpin(int i)
+            {
+                if (i == 0)
+                    {
+                    Console.WriteLine("Wprowadź kwotę wypłaty (Podzielna przez 10 zł):");
+                    string cash = Console.ReadLine();
+                    int cc = Convert.ToInt32(cash);
+                    i = cc;
+                    }
+                if (i % 10 == 0)
+                {
+                    Console.WriteLine("Wprowadź 4-cyfrowy PIN:");
+                    string pinn = Console.ReadLine();
+                    if (pinn.Length == 4)
+                    {
+                        Console.WriteLine("Prawidłowy PIN");
+                        Console.WriteLine("Wypłacono " + i + "PLN");
+
+
+                    }
+                    else
+                    {
+                        enterpin(i);
+                    }
+                }
+                else
+                {
+                    enterpin(0);
+                }
+                
+
+            }
+        }
+        
+    }
+}
